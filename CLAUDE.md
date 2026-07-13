@@ -46,6 +46,7 @@ npm run lint       # ESLint 규칙 검사
   - `docs/design/phase1.md` — Phase 1(메인 화면) 설계
   - `docs/design/phase2.md` — Phase 2(Player 이동 & Wire 발사) 설계
   - `docs/design/phase3.md` — Phase 3(Bubble 물리) 설계
+  - `docs/design/phase4.md` — Phase 4(Wire ↔ Bubble 충돌, 분할, 스테이지 클리어) 설계
 
 ## 기획 문서 (팡 게임)
 

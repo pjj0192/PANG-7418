@@ -17,3 +17,13 @@ export const WIRE_SPAWN_OFFSET_Y = 10
 export const MUZZLE_OFFSET_X = 18
 export const MUZZLE_OFFSET_Y = 30
 export const MUZZLE_FLASH_DURATION_MS = 120
+
+export type BubbleSize = 'large' | 'medium' | 'small'
+
+export const BUBBLE_RADIUS: Record<BubbleSize, number> = {
+  large: 32,
+  medium: 22,
+  small: 14,
+}
+
+export const BUBBLE_GRAVITY = 0.0009 // px per ms^2

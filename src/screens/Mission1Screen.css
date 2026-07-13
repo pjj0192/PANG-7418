@@ -29,6 +29,15 @@
   box-shadow: 0 0 8px rgba(255, 47, 208, 0.8);
 }
 
+.bubble {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.85), rgba(120, 200, 255, 0.35) 60%, rgba(47, 208, 255, 0.15));
+  border: 2px solid rgba(120, 200, 255, 0.8);
+  box-shadow: 0 0 12px rgba(120, 200, 255, 0.6);
+}
+
 .muzzle-flash {
   position: absolute;
   z-index: 3;

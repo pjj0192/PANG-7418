@@ -18,6 +18,9 @@ import { useGameLoop } from '../game/useGameLoop'
 import Player from '../game/Player'
 import Wire from '../game/Wire'
 import MuzzleFlash from '../game/MuzzleFlash'
+import BubbleView from '../game/Bubble'
+import { stepBubble } from '../game/bubblePhysics'
+import type { Bubble } from '../game/bubblePhysics'
 
 type WireState = {
   id: number
@@ -31,10 +34,16 @@ type MuzzleFlashState = {
   y: number
 }
 
+const INITIAL_BUBBLES: Bubble[] = [
+  { id: 0, x: GAME_WIDTH * 0.3, y: 120, vx: 0.12, vy: 0, size: 'large' },
+  { id: 1, x: GAME_WIDTH * 0.7, y: 200, vx: -0.1, vy: 0, size: 'large' },
+]
+
 function Mission1Screen() {
   const [playerX, setPlayerX] = useState(GAME_WIDTH / 2)
   const [wires, setWires] = useState<WireState[]>([])
   const [flashes, setFlashes] = useState<MuzzleFlashState[]>([])
+  const [bubbles, setBubbles] = useState<Bubble[]>(INITIAL_BUBBLES)
 
   const pressedKeys = useRef(new Set<string>())
   const playerXRef = useRef(playerX)
@@ -111,6 +120,8 @@ function Mission1Screen() {
         .map((wire) => ({ ...wire, y: wire.y - WIRE_SPEED * deltaMs }))
         .filter((wire) => wire.y > 0)
     })
+
+    setBubbles((current) => current.map((bubble) => stepBubble(bubble, deltaMs)))
   })
 
   return (
@@ -125,6 +136,9 @@ function Mission1Screen() {
           } as CSSProperties
         }
       >
+        {bubbles.map((bubble) => (
+          <BubbleView key={bubble.id} x={bubble.x} y={bubble.y} size={bubble.size} />
+        ))}
         {wires.map((wire) => (
           <Wire key={wire.id} x={wire.x} y={wire.y} />
         ))}

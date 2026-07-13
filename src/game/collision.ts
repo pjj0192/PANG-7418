@@ -14,7 +14,7 @@ const NEXT_SIZE: Record<BubbleSize, BubbleSize | null> = {
   small: null,
 }
 
-function circleIntersectsRect(
+export function circleIntersectsRect(
   cx: number,
   cy: number,
   r: number,
@@ -77,4 +77,25 @@ export function resolveWireBubbleCollisions(
   }
 
   return { wires: survivingWires, bubbles: nextBubbles }
+}
+
+export type RectLike = {
+  left: number
+  top: number
+  width: number
+  height: number
+}
+
+export function findBubbleHittingPlayer(playerRect: RectLike, bubbles: Bubble[]): Bubble | undefined {
+  return bubbles.find((bubble) =>
+    circleIntersectsRect(
+      bubble.x,
+      bubble.y,
+      BUBBLE_RADIUS[bubble.size],
+      playerRect.left,
+      playerRect.top,
+      playerRect.width,
+      playerRect.height,
+    ),
+  )
 }

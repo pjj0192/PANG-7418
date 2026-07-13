@@ -3,14 +3,15 @@ import { PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_Y } from './constants'
 
 type PlayerProps = {
   x: number
+  isInvincible?: boolean
 }
 
-function Player({ x }: PlayerProps) {
+function Player({ x, isInvincible = false }: PlayerProps) {
   return (
     <img
       src={charImage}
       alt=""
-      className="player"
+      className={isInvincible ? 'player player--invincible' : 'player'}
       style={{
         left: x - PLAYER_WIDTH / 2,
         top: PLAYER_Y,

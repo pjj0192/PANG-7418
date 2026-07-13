@@ -5,6 +5,12 @@
   gap: 1rem;
 }
 
+.game-stage {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
 .game-area {
   position: relative;
   width: var(--game-width);
@@ -19,6 +25,55 @@
   position: absolute;
   z-index: 2;
   filter: drop-shadow(0 0 8px rgba(47, 208, 255, 0.8));
+}
+
+.player--invincible {
+  animation: player-blink 150ms steps(1) infinite;
+}
+
+@keyframes player-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.25;
+  }
+}
+
+.health-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  height: var(--game-height);
+  padding: 6px 0;
+}
+
+.health-bar__track {
+  position: relative;
+  width: 20px;
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(to top, #ff3b3b 0%, #ffd93b 50%, #4caf50 100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.health-bar__mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 8, 20, 0.88);
+  transition: height 200ms ease;
+}
+
+.health-bar__label {
+  font-size: 0.85rem;
+  color: #f5f5f5;
 }
 
 .wire {
@@ -62,6 +117,30 @@
   }
 }
 
+.hit-effect {
+  position: absolute;
+  z-index: 3;
+  width: 56px;
+  height: 56px;
+  margin-left: -28px;
+  margin-top: -28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 90, 90, 0.85) 0%, rgba(255, 59, 59, 0.5) 45%, rgba(255, 59, 59, 0) 75%);
+  pointer-events: none;
+  animation: hit-effect-pop 300ms ease-out forwards;
+}
+
+@keyframes hit-effect-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
 .clear-overlay {
   position: absolute;
   inset: 0;
@@ -80,4 +159,24 @@
   text-shadow:
     0 0 10px #ff2fd0,
     0 0 30px #7b2ff7;
+}
+
+.game-over-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 4, 8, 0.8);
+}
+
+.game-over-overlay p {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.6rem;
+  color: #fff;
+  letter-spacing: 0.15rem;
+  text-shadow:
+    0 0 10px #ff3b3b,
+    0 0 30px #7b0f0f;
 }

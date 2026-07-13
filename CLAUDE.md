@@ -38,3 +38,12 @@ npm run lint       # ESLint 규칙 검사
 - `src/App.tsx` — 최상위 컴포넌트
 - `index.html` — Vite가 서빙하는 HTML 셸, `src/main.tsx`를 모듈로 로드
 - `.mcp.json` — GitHub MCP 서버 설정 (토큰 포함, git에 커밋되지 않도록 `.gitignore`에 등록됨)
+
+## 기획 문서 (팡 게임)
+
+게임 기획/규칙은 코드가 아닌 문서로 관리되며, 구현 전에 반드시 참고할 것:
+
+- `docs/PRD.md` — 팡 게임 Mission 1 전체 개요(목표, 핵심 메커니즘, MVP 스코프)
+- `docs/FEATURES/main.md` — 메인(타이틀) 화면 구성
+- `docs/FEATURES/game_rule.md` — Player/Wire/Bubble/Block 단위의 상세 게임 룰
+- `docs/FEATURES/mission1.md` — Mission 1의 난이도 구성 및 진행/종료 규칙

@@ -48,9 +48,3 @@
 - 스테이지 클리어(Bubble 전부 소멸) 판정
 
 파워업, 2인 협동 플레이, 스테이지 셀렉트, 점수/랭킹 시스템은 Mission 1 이후 범위로 둠.
-
-## 참고 자료
-
-- [나무위키 - 팡(게임)](https://namu.wiki/w/%ED%8C%A1(%EA%B2%8C%EC%9E%84))
-- [Wikipedia - Buster Bros. (Pang)](https://en.wikipedia.org/wiki/Buster_Bros.)
-- [Museum of the Game - Pang](https://www.arcade-museum.com/Videogame/pang)

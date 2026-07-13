@@ -1,0 +1,56 @@
+# PRD - 팡(Pang) 게임 Mission 1
+
+## 핵심 목표
+
+- 화면에 등장하는 모든 Bubble을 소멸시키면 승리
+- Bubble에 닿으면 목숨을 잃음, 초기 목숨 개수는 5개
+- 목숨을 모두 소진하면 게임 오버
+
+## 오브젝트별 규칙
+
+### Player
+
+- 키보드 방향키 좌/우 버튼으로 이동
+- Bubble에 닿으면 목숨을 잃음
+- 수직 방향 위로만 Wire 발사 가능
+
+### Wire
+
+- Space 키로 발사
+- Bubble을 맞추면 작은 2개로 분할됨
+- 벽은 뚫지 못함
+
+### Bubble
+
+- 좌/우 방향으로 공처럼 튀겨짐
+- 중력의 영향을 받고, 튕길 때마다 같은 높이까지 올라감
+- 가장 작은 크기의 Bubble은 Wire를 맞으면 소멸됨
+- 화면 밖으로 나갈 수 없음
+
+### Block
+
+- 벽은 부서지지 않음
+- Bubble은 Block 위로 튕겨질 수 있음
+
+## 승리/패배 조건
+
+- **승리**: 화면 내 모든 Bubble 소멸
+- **패배**: 목숨(5개) 모두 소진
+
+## Mission 1 범위 (MVP 스코프)
+
+우선순위가 높은 핵심 루프만 우선 구현하고, 파워업/점수 시스템/멀티 스테이지 등은 이후 미션으로 확장:
+
+- Player 좌우 이동 및 Wire 발사(위쪽 수직 방향)
+- Bubble 물리(중력, 좌우 반사, 벽/Block 위 튕김, 분할)
+- 충돌 판정(Player vs Bubble, Wire vs Bubble, Bubble vs Block/벽)
+- 목숨 및 게임 오버 처리
+- 스테이지 클리어(Bubble 전부 소멸) 판정
+
+파워업, 2인 협동 플레이, 스테이지 셀렉트, 점수/랭킹 시스템은 Mission 1 이후 범위로 둠.
+
+## 참고 자료
+
+- [나무위키 - 팡(게임)](https://namu.wiki/w/%ED%8C%A1(%EA%B2%8C%EC%9E%84))
+- [Wikipedia - Buster Bros. (Pang)](https://en.wikipedia.org/wiki/Buster_Bros.)
+- [Museum of the Game - Pang](https://www.arcade-museum.com/Videogame/pang)

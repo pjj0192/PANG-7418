@@ -21,6 +21,7 @@ import MuzzleFlash from '../game/MuzzleFlash'
 import BubbleView from '../game/Bubble'
 import { stepBubble } from '../game/bubblePhysics'
 import type { Bubble } from '../game/bubblePhysics'
+import { resolveWireBubbleCollisions } from '../game/collision'
 
 type WireState = {
   id: number
@@ -44,12 +45,18 @@ function Mission1Screen() {
   const [wires, setWires] = useState<WireState[]>([])
   const [flashes, setFlashes] = useState<MuzzleFlashState[]>([])
   const [bubbles, setBubbles] = useState<Bubble[]>(INITIAL_BUBBLES)
+  const [isCleared, setIsCleared] = useState(false)
 
   const pressedKeys = useRef(new Set<string>())
   const playerXRef = useRef(playerX)
   playerXRef.current = playerX
+  const wiresRef = useRef(wires)
+  wiresRef.current = wires
+  const bubblesRef = useRef(bubbles)
+  bubblesRef.current = bubbles
   const nextWireId = useRef(0)
   const nextFlashId = useRef(0)
+  const nextBubbleId = useRef(INITIAL_BUBBLES.length)
   const flashTimeouts = useRef(new Set<ReturnType<typeof setTimeout>>())
 
   const fireWire = () => {
@@ -114,14 +121,23 @@ function Mission1Screen() {
       setPlayerX((x) => Math.min(GAME_WIDTH - halfWidth, Math.max(halfWidth, x + dx)))
     }
 
-    setWires((current) => {
-      if (current.length === 0) return current
-      return current
-        .map((wire) => ({ ...wire, y: wire.y - WIRE_SPEED * deltaMs }))
-        .filter((wire) => wire.y > 0)
-    })
+    const movedWires = wiresRef.current
+      .map((wire) => ({ ...wire, y: wire.y - WIRE_SPEED * deltaMs }))
+      .filter((wire) => wire.y > 0)
+    const movedBubbles = bubblesRef.current.map((bubble) => stepBubble(bubble, deltaMs))
 
-    setBubbles((current) => current.map((bubble) => stepBubble(bubble, deltaMs)))
+    const { wires: nextWires, bubbles: nextBubbles } = resolveWireBubbleCollisions(
+      movedWires,
+      movedBubbles,
+      () => nextBubbleId.current++,
+    )
+
+    setWires(nextWires)
+    setBubbles(nextBubbles)
+
+    if (nextBubbles.length === 0) {
+      setIsCleared(true)
+    }
   })
 
   return (
@@ -146,6 +162,11 @@ function Mission1Screen() {
         {flashes.map((flash) => (
           <MuzzleFlash key={flash.id} x={flash.x} y={flash.y} />
         ))}
+        {isCleared && (
+          <div className="clear-overlay">
+            <p>STAGE CLEAR</p>
+          </div>
+        )}
       </div>
     </div>
   )

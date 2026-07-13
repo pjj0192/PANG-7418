@@ -27,3 +27,7 @@ export const BUBBLE_RADIUS: Record<BubbleSize, number> = {
 }
 
 export const BUBBLE_GRAVITY = 0.0009 // px per ms^2
+
+// Bubble이 Wire에 맞아 분할될 때 두 조각이 갈라지는 속도
+export const SPLIT_SPEED_X = 0.15
+export const SPLIT_KICK_VY = -0.35

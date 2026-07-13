@@ -61,3 +61,23 @@
     opacity: 0;
   }
 }
+
+.clear-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 12, 41, 0.75);
+}
+
+.clear-overlay p {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.6rem;
+  color: #fff;
+  letter-spacing: 0.15rem;
+  text-shadow:
+    0 0 10px #ff2fd0,
+    0 0 30px #7b2ff7;
+}

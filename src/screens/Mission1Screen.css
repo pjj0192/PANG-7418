@@ -31,6 +31,11 @@
   animation: player-blink 150ms steps(1) infinite;
 }
 
+.player--shielded {
+  filter:
+    drop-shadow(0 0 8px rgba(47, 208, 255, 0.8)) drop-shadow(0 0 14px rgba(255, 215, 0, 0.9));
+}
+
 @keyframes player-blink {
   0%,
   49% {
@@ -115,6 +120,85 @@
     transform: scale(1.6);
     opacity: 0;
   }
+}
+
+.item {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #1a1a1a;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.item--spread {
+  background: radial-gradient(circle at 35% 30%, #baf7ff, #2fd0ff);
+}
+
+.item--fireSpeed {
+  background: radial-gradient(circle at 35% 30%, #ffe0ba, #ff9a2f);
+}
+
+.item--maxWire {
+  background: radial-gradient(circle at 35% 30%, #e3baff, #a12fff);
+}
+
+.item--heal {
+  background: radial-gradient(circle at 35% 30%, #ffd0d8, #ff4d6d);
+}
+
+.item--invincible {
+  background: radial-gradient(circle at 35% 30%, #fff6ba, #ffd700);
+}
+
+.item-pickup-effect {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, 0);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
+  white-space: nowrap;
+  pointer-events: none;
+  animation: item-pickup-float 700ms ease-out forwards;
+}
+
+@keyframes item-pickup-float {
+  from {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -40px);
+    opacity: 0;
+  }
+}
+
+.invincibility-bar {
+  position: absolute;
+  z-index: 3;
+  width: 40px;
+  height: 6px;
+  margin-left: -20px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 215, 0, 0.8);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.invincibility-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #fff4b8);
+  transition: width 100ms linear;
 }
 
 .hit-effect {

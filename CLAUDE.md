@@ -44,6 +44,7 @@ npm run lint       # ESLint 규칙 검사
 - `PLAN.md` — Mission 1 구현을 Phase별로 나눈 계획 문서. 각 Phase는 동작하는 SW를 목표로 하며, Phase별 포함 기능과 사용자(고객)가 테스트 시 중점적으로 볼 부분을 정리함
 - `docs/design/phaseN.md` — 각 Phase를 실제로 어떻게 구현할지에 대한 상세 설계 문서(컴포넌트/파일 구조, 상태 관리, 이벤트 처리, 검수 체크리스트 등). Phase 구현에 착수하기 전 반드시 해당 Phase의 설계 문서를 먼저 확인할 것
   - `docs/design/phase1.md` — Phase 1(메인 화면) 설계
+  - `docs/design/phase2.md` — Phase 2(Player 이동 & Wire 발사) 설계
 
 ## 기획 문서 (팡 게임)
 

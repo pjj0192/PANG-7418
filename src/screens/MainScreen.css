@@ -1,0 +1,113 @@
+.main-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bubble-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-bubble {
+  position: absolute;
+  bottom: -80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(120, 200, 255, 0.15));
+  box-shadow: 0 0 15px rgba(120, 200, 255, 0.5);
+  animation-name: float-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes float-up {
+  from {
+    transform: translateY(0) translateX(0);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(-110vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3.5rem;
+  letter-spacing: 0.2rem;
+  margin: 0;
+  color: #fff;
+  text-shadow:
+    0 0 10px #ff2fd0,
+    0 0 20px #ff2fd0,
+    0 0 40px #7b2ff7,
+    0 0 80px #7b2ff7;
+  animation: title-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes title-pulse {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px #ff2fd0,
+      0 0 20px #ff2fd0,
+      0 0 40px #7b2ff7,
+      0 0 80px #7b2ff7;
+  }
+  50% {
+    text-shadow:
+      0 0 20px #ff2fd0,
+      0 0 40px #ff2fd0,
+      0 0 60px #7b2ff7,
+      0 0 100px #7b2ff7;
+  }
+}
+
+.start-button {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.8rem 2.4rem;
+  border-radius: 999px;
+  border: 2px solid #7b2ff7;
+  background: rgba(123, 47, 247, 0.15);
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+  box-shadow: 0 0 15px rgba(123, 47, 247, 0.4);
+}
+
+.start-button:hover,
+.start-button:focus-visible {
+  background: rgba(123, 47, 247, 0.35);
+  box-shadow: 0 0 25px rgba(123, 47, 247, 0.8);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.start-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.controls-guide {
+  font-size: 0.9rem;
+  color: #c9c4e0;
+  letter-spacing: 0.05rem;
+}
